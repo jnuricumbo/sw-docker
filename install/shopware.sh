@@ -8,6 +8,14 @@ SHOPWARE_DIR=/var/www/shopware
 git clone --branch=6.2 https://github.com/shopware/production $SHOPWARE_DIR
 cd $SHOPWARE_DIR
 
+# Permissions
+sudo chmod 777 /var/www/shopware/
+sudo chmod 777 /var/www/shopware/var/cache/
+sudo chmod 777 /var/www/shopware/var/log/
+# sudo chmod 777 /var/www/shopware/public
+# sudo chmod 777 /var/www/shopware/config/jwt/
+# sudo chmod 777 /var/www/shopware/public/recovery/install/data/
+
 # install shopware and dependencies according to the composer.lock 
 composer install
 
@@ -23,10 +31,3 @@ bin/console system:install --create-database --basic-setup
 
 # or use the interactive installer in the browser: /recovery/install/index.php
 
-# Permissions
-sudo chmod 777 /var/www/shopware/
-sudo chmod 777 /var/www/shopware/var/cache/
-sudo chmod 777 /var/www/shopware/var/log/
-sudo chmod 777 /var/www/shopware/public
-sudo chmod 777 /var/www/shopware/config/jwt/
-sudo chmod 777 /var/www/shopware/public/recovery/install/data/

@@ -11,9 +11,8 @@
 #### Mysql
 Inside of container call the mysql installer and create a user as follow
 ```zsh
-  sudo /install/mysql.sh
-```
-```zsh
+sudo /etc/init.d/mysql start
+sudo mysql_secure_installation
 sudo mysql -u root
 CREATE USER 'app'@'localhost' IDENTIFIED BY 'root';
 GRANT ALL PRIVILEGES ON *.* TO 'app'@'localhost';
