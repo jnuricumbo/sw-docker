@@ -1,10 +1,16 @@
 ## Steps to build and configure a production shopware instance
 ### Build image and run it
+#### Build
 ```zsh
   docker build --tag shopware:6.2 .
 ```
+#### Run
 ```zsh
-  docker run -p 8000:8000 -it shopware:6.2
+  docker run --name shopware -d -p 8000:8000 -it shopware:6.2
+```
+#### Go inside container
+```zsh
+  docker exec -it shopware bash
 ```
 
 ### Run installers
