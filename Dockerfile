@@ -15,17 +15,17 @@ RUN apt-get install -y \
       php-simplexml php-tokenizer php-xml \
       php-xmlreader php-xmlwriter php-zip php-phar
 
-# Copy scripts to install folder
-COPY install/ /install/
-
-# Install composer
-RUN /install/composer.sh
-
-# Create user and give privileges
-RUN adduser --disabled-password --gecos '' ubuntu
+# Create user, give privileges and use sw-install as home directory
+RUN adduser --home /sw-install/ --disabled-password --gecos '' ubuntu
 RUN adduser ubuntu sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER ubuntu
+
+# Copy scripts to install folder
+COPY sw-install/ /sw-install/
+
+# Install composer
+RUN sudo /sw-install/composer.sh
 
 # Expose the port apache is reachable on
 EXPOSE 8000/tcp
