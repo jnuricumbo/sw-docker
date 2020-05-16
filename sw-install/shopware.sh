@@ -17,6 +17,9 @@ chmod 777 $SHOPWARE_DIR/var/log/
 chmod 777 $SHOPWARE_DIR/public
 chmod 777 $SHOPWARE_DIR/config/jwt/
 chmod 777 $SHOPWARE_DIR/public/recovery/install/data/
+chmod 777 $SHOPWARE_DIR/custom/plugins/
+chmod 777 $SHOPWARE_DIR/public/media/
+chmod 777 $SHOPWARE_DIR/public/theme/
 
 # setup the environment
 bin/console system:setup
@@ -28,5 +31,8 @@ bin/console system:setup
 # create database with a basic setup (admin user and storefront sales channel)
 # or use the interactive installer in the browser: /recovery/install/index.php
 bin/console system:install --create-database --basic-setup
+
+# COMPOSER_HOME
+echo COMPOSER_HOME="/sw-install/" >> $SHOPWARE_DIR/.env
 
 cd ~
