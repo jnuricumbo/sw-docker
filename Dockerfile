@@ -30,7 +30,7 @@ RUN ./composer.sh
 
 # Entry on sw-install home directory
 USER ubuntu
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/sw-install/entrypoint.sh"]
 
 # Expose the port apache is reachable on
 EXPOSE 8000/tcp
