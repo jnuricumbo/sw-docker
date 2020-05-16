@@ -1,9 +1,5 @@
 FROM ubuntu:18.04
 
-WORKDIR /sw-install
-COPY sw-install/ .
-VOLUME sw-install/ /sw-install
-
 ENV DEBIAN_FRONTEND=noninteractive 
 
 # Update
@@ -18,6 +14,9 @@ RUN apt-get install -y \
       php-mysqli \
       php-simplexml php-tokenizer php-xml \
       php-xmlreader php-xmlwriter php-zip php-phar
+
+WORKDIR /sw-install
+COPY sw-install/ .
 
 # Create user, give privileges and use sw-install as home directory
 RUN adduser --disabled-password --gecos '' ubuntu

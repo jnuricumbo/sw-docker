@@ -9,7 +9,7 @@
 
 ### Run installers
 #### Mysql
-Inside of container call the mysql installer and create a user as follow
+Inside of container and the home directory sw-install call the mysql, shopware and apache installer
 ```zsh
 sudo /etc/init.d/mysql start
 sudo mysql_secure_installation
@@ -22,10 +22,10 @@ exit
 #### Shopware
 Run shopware installer, it will take some time to download dependencies, after that just follow the instructions. Use http://localhost:8000 as APP_URL and the DB credentials created in previous step
 ```zsh
-  sudo /install/shopware.sh
+  sudo ./shopware.sh
 ```
 #### Apache
 Run apache configurator
 ```zsh
-  sudo /install/apache.sh
+  sudo ./apache.sh
 ```

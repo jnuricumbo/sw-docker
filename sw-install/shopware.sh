@@ -1,23 +1,25 @@
 #!/bin/sh
 
+git clone --branch=6.2 https://github.com/shopware/production shopware
+
 SHOPWARE_DIR=/var/www/shopware
-
-# sudo wget https://www.shopware.com/de/Download/redirect/version/sw6/file/install_6.1.5_1585830011.zip -O sw6.zip
-# sudo unzip sw6.zip -q -d ./shopware
-
-git clone --branch=6.2 https://github.com/shopware/production $SHOPWARE_DIR
+mkdir $SHOPWARE_DIR
+cp -avr shopware/* $SHOPWARE_DIR
 cd $SHOPWARE_DIR
 
-# Permissions
-sudo chmod 777 /var/www/shopware/
-sudo chmod 777 /var/www/shopware/var/cache/
-sudo chmod 777 /var/www/shopware/var/log/
-# sudo chmod 777 /var/www/shopware/public
-# sudo chmod 777 /var/www/shopware/config/jwt/
-# sudo chmod 777 /var/www/shopware/public/recovery/install/data/
 
 # install shopware and dependencies according to the composer.lock 
 composer install
+
+# Permissions
+chmod 777 $SHOPWARE_DIR
+chmod 777 $SHOPWARE_DIR/var/cache/
+chmod 777 $SHOPWARE_DIR/var/log/
+chmod 777 $SHOPWARE_DIR/public
+chmod 777 $SHOPWARE_DIR/config/jwt/
+chmod 777 $SHOPWARE_DIR/public/recovery/install/data/
+chown www-data:www-data $SHOPWARE_DIR/config/jwt/private.pem
+chown www-data:www-data $SHOPWARE_DIR/config/jwt/public.pem
 
 # setup the environment
 bin/console system:setup
@@ -27,7 +29,7 @@ bin/console system:setup
 # create .env
 
 # create database with a basic setup (admin user and storefront sales channel)
+# or use the interactive installer in the browser: /recovery/install/index.php
 bin/console system:install --create-database --basic-setup
 
-# or use the interactive installer in the browser: /recovery/install/index.php
-
+cd ~
