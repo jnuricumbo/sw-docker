@@ -1,6 +1,6 @@
 #!/bin/sh
 
-$SHOPWARE_DIR=/var/www/shopware
+SHOPWARE_DIR=/var/www/shopware
 # Copy config and enable site
 sudo a2dissite 000-default.conf
 sudo rm /etc/apache2/sites-available/000-default.conf
