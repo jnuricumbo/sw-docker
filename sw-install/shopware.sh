@@ -12,8 +12,8 @@ composer install
 
 # Permissions
 chmod 777 $SHOPWARE_DIR
-chmod 777 $SHOPWARE_DIR/var/cache/
-chmod 777 $SHOPWARE_DIR/var/log/
+chmod 777 -R $SHOPWARE_DIR/var/cache/
+chmod 777 -R $SHOPWARE_DIR/var/log/
 chmod 777 $SHOPWARE_DIR/public
 chmod 777 $SHOPWARE_DIR/config/jwt/
 chmod 777 $SHOPWARE_DIR/public/recovery/install/data/
