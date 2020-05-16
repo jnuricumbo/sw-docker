@@ -3,10 +3,9 @@
 git clone --branch=6.2 https://github.com/shopware/production shopware
 
 SHOPWARE_DIR=/var/www/shopware
-mkdir $SHOPWARE_DIR
-cp -avr shopware/* $SHOPWARE_DIR
+cp -avr shopware/ $SHOPWARE_DIR
+rm -rf shopware/
 cd $SHOPWARE_DIR
-
 
 # install shopware and dependencies according to the composer.lock 
 composer install
