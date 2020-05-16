@@ -8,13 +8,17 @@
 ```
 
 ### Run installers
-#### Mysql
 Inside of container and the home directory sw-install call the mysql, shopware and apache installer
+#### Mysql
+Setup mysql, choose a password and just answer yes to all
 ```zsh
 sudo /etc/init.d/mysql start
 sudo mysql_secure_installation
+```
+Create a user 'app' with password 'shopware' with all privile1ges
+```zsh
 sudo mysql -u root
-CREATE USER 'app'@'localhost' IDENTIFIED BY 'root';
+CREATE USER 'app'@'localhost' IDENTIFIED BY 'shopware';
 GRANT ALL PRIVILEGES ON *.* TO 'app'@'localhost';
 FLUSH PRIVILEGES;
 exit

@@ -18,8 +18,6 @@ chmod 777 $SHOPWARE_DIR/var/log/
 chmod 777 $SHOPWARE_DIR/public
 chmod 777 $SHOPWARE_DIR/config/jwt/
 chmod 777 $SHOPWARE_DIR/public/recovery/install/data/
-chown www-data:www-data $SHOPWARE_DIR/config/jwt/private.pem
-chown www-data:www-data $SHOPWARE_DIR/config/jwt/public.pem
 
 # setup the environment
 bin/console system:setup
