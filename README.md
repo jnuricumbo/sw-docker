@@ -4,7 +4,7 @@
   docker build --tag shopware:6.2 .
 ```
 ```zsh
-  docker run -p 8000:8000/tcp -it shopware:6.2 /bin/bash
+  docker run -p 8000:8000 -it shopware:6.2
 ```
 
 ### Run installers

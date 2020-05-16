@@ -1,5 +1,9 @@
 FROM ubuntu:18.04
 
+WORKDIR /sw-install
+COPY sw-install/ .
+VOLUME sw-install/ /sw-install
+
 ENV DEBIAN_FRONTEND=noninteractive 
 
 # Update
@@ -16,16 +20,18 @@ RUN apt-get install -y \
       php-xmlreader php-xmlwriter php-zip php-phar
 
 # Create user, give privileges and use sw-install as home directory
-RUN adduser --home /sw-install/ --disabled-password --gecos '' ubuntu
+RUN adduser --disabled-password --gecos '' ubuntu
 RUN adduser ubuntu sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-USER ubuntu
-
-# Copy scripts to install folder
-COPY sw-install/ /sw-install/
+RUN sudo chown -R ubuntu:ubuntu /sw-install
+RUN sudo usermod -d /sw-install ubuntu
 
 # Install composer
-RUN sudo /sw-install/composer.sh
+RUN ./composer.sh
+
+# Entry on sw-install home directory
+USER ubuntu
+ENTRYPOINT ["/bin/bash"]
 
 # Expose the port apache is reachable on
 EXPOSE 8000/tcp
