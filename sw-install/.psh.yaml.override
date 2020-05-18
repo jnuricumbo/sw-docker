@@ -1,0 +1,8 @@
+const:
+  APP_URL: "http://localhost:8000"
+  DB_USER: "app"
+  DB_PASSWORD: "shopware"
+  DB_HOST: "localhost"
+  DB_PORT: "3306"
+  DB_NAME: "shopware"
+  COMPOSER_HOME: "/sw-install/"

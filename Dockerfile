@@ -7,7 +7,7 @@ RUN apt-get update
 
 # Install packages
 RUN apt-get install -y \
-      sudo git wget vim unzip mysql-server \
+      sudo git wget curl vim build-essential mysql-server \
       php libapache2-mod-php php-fpm \
       php-ctype php-curl php-dom php-fileinfo php-gd \
       php-iconv php-intl php-json php-mbstring \
@@ -15,6 +15,11 @@ RUN apt-get install -y \
       php-simplexml php-tokenizer php-xml \
       php-xmlreader php-xmlwriter php-zip php-phar
 
+# Install Nodejs
+RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+RUN apt-get install -y nodejs
+
+# Workspace
 WORKDIR /sw-install
 COPY sw-install/ .
 

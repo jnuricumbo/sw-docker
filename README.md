@@ -29,7 +29,7 @@ FLUSH PRIVILEGES;
 exit
 ```
 #### Shopware
-Run shopware installer, it will take some time to download dependencies, after that just follow the instructions. Use http://localhost:8000 as APP_URL and the DB credentials created in previous step
+Run shopware installer
 ```zsh
   sudo ./shopware.sh
 ```
