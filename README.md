@@ -1,4 +1,4 @@
-## Steps to build and configure a production shopware instance
+## Steps to build and configure a development shopware instance
 ### Build image and run it
 #### Build
 ```zsh
