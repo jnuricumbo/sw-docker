@@ -1,4 +1,5 @@
 ## Steps to build and configure a development shopware instance
+A built image can be founde [here](https://hub.docker.com/r/jnuricumbo/shopware-dev)
 ### Build image and run it
 #### Build
 ```zsh
